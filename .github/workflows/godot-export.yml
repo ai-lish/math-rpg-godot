@@ -17,11 +17,10 @@ jobs:
         run: rm -rf addons/mcp_server
       
       - name: Godot CI
-        uses: barichello/godot-ci-action@v1
+        uses: abarichello/godot-ci-action@v1
         with:
           Godot_version: "4.3.stable"
           platform: web
-          args: --headless
       
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
