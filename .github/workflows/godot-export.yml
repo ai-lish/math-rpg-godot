@@ -8,24 +8,20 @@ on:
 jobs:
   export:
     runs-on: ubuntu-latest
-    container:
-      image: barichello/godot-ci:4.3
-    
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
         with:
           lfs: true
       
       - name: Remove MCP plugin for export
-        run: |
-          # Remove MCP plugin directory to prevent export errors
-          rm -rf addons/mcp_server
+        run: rm -rf addons/mcp_server
       
-      - name: Export HTML5
-        run: |
-          mkdir -p build
-          godot --headless --export-release "Web" build/
+      - name: Godot CI
+        uses: barichello/godot-ci-action@v1
+        with:
+          Godot_version: "4.3.stable"
+          platform: web
+          args: --headless
       
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
