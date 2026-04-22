@@ -9,7 +9,7 @@ jobs:
   export:
     runs-on: ubuntu-latest
     container:
-      image: abarichello/godot-ci:4.3
+      image: barichello/godot-ci:4.3
     
     steps:
       - name: Checkout
