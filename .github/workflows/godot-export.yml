@@ -8,19 +8,27 @@ on:
 jobs:
   export:
     runs-on: ubuntu-latest
+    container:
+      image: barichello/godot-ci:4.3
+    
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
         with:
           lfs: true
       
       - name: Remove MCP plugin for export
         run: rm -rf addons/mcp_server
       
-      - name: Godot CI
-        uses: abarichello/godot-ci-action@v1
-        with:
-          Godot_version: "4.3.stable"
-          platform: web
+      - name: Setup Godot templates
+        run: |
+          mkdir -p ~/.local/share/godot/export_templates/4.3.stable
+          cp -r /home/godot/.local/share/godot/export_templates/4.3.stable/* ~/.local/share/godot/export_templates/4.3.stable/ 2>/dev/null || true
+      
+      - name: Export HTML5
+        run: |
+          mkdir -p build
+          godot --headless --export-release "Web" build/
       
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
