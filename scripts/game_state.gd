@@ -5,7 +5,6 @@ var level: int = 1
 var exp: int = 0
 var xp: int = 0  # Alias for exp
 var exp_to_next: int = 100
-var xp_to_level_up: FuncRef  # Function reference
 var hp: int = 100
 var max_hp: int = 100
 var attack: int = 10
@@ -21,8 +20,8 @@ signal leveled_up
 signal hp_changed(new_hp: int)
 signal player_died
 
-func _init() -> void:
-    xp_to_level_up = func(): return exp_to_next
+func xp_to_next_level() -> int:
+    return exp_to_next
 
 func add_xp(amount: int) -> void:
     exp += amount

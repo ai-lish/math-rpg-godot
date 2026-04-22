@@ -9,7 +9,7 @@ func _ready() -> void:
 func _update_hud() -> void:
 	var hud = $HBoxContainer
 	hud/XPBar.value = GameState.xp
-	hud/XPBar.max_value = GameState.xp_to_level_up()
+	hud/XPBar.max_value = GameState.xp_to_next_level()
 	hud/LevelLabel.text = "Lv." + str(GameState.level)
 	hud/CreditsLabel.text = str(GameState.credits)
 	hud/StreakLabel.text = "🔥 " + str(GameState.streak)
