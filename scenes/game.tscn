@@ -1,268 +1,346 @@
-[gd_scene load_steps=4 format=3 uid="uid://game"]
+[gd_scene load_steps=3 format=3 uid="uid://game"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="2"]
-[ext_resource type="Script" path="res://scripts/hud.gd" id="3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_player"]
+size = Vector2(28, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_alg"]
+size = Vector2(144, 96)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_geo"]
+size = Vector2(144, 96)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_stat"]
+size = Vector2(144, 96)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_prob"]
+size = Vector2(144, 96)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_func"]
+size = Vector2(144, 96)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eq"]
+size = Vector2(144, 96)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_area"]
+size = Vector2(144, 96)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_coord"]
+size = Vector2(144, 96)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ratio"]
+size = Vector2(144, 96)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_seq"]
+size = Vector2(144, 96)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pct"]
+size = Vector2(144, 96)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_approx"]
+size = Vector2(144, 96)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_daily"]
+size = Vector2(96, 96)
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1")
 
+[node name="Background" type="ColorRect" parent="."]
+offset_left = -1280.0
+offset_top = -720.0
+offset_right = 1280.0
+offset_bottom = 720.0
+color = Color(0.1, 0.1, 0.15, 1)
+
 [node name="Player" type="CharacterBody2D" parent="."]
-position = Vector2(400, 300)
+position = Vector2(400, 450)
 script = ExtResource("2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+shape = SubResource("RectangleShape2D_player")
 
 [node name="Sprite" type="ColorRect" parent="Player"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size = Vector2(32, 32)
-color = Color(0.3, 0.5, 1, 1)
+offset_left = -14.0
+offset_top = -20.0
+offset_right = 14.0
+offset_bottom = 20.0
+color = Color(0.2, 0.5, 1, 1)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-zoom = Vector2(2, 2)
+zoom = Vector2(1.5, 1.5)
 
 [node name="代數房" type="Area2D" parent="."]
+position = Vector2(120, 144)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="代數房"]
-position = Vector2(120, 144)
-shape = RectangleShape2D.new()
-size = Vector2(144, 96)
+shape = SubResource("RectangleShape2D_alg")
+
+[node name="Sprite" type="ColorRect" parent="代數房"]
+offset_left = -72.0
+offset_top = -48.0
+offset_right = 72.0
+offset_bottom = 48.0
+color = Color(0.29, 0.565, 0.851, 0.8)
 
 [node name="Label" type="Label" parent="代數房"]
-offset_left = 72.0
-offset_top = 128.0
-offset_right = 168.0
-offset_bottom = 160.0
+offset_left = -36.0
+offset_top = -58.0
+offset_right = 36.0
+offset_bottom = -38.0
 text = "代數房"
+horizontal_alignment = 1
 
 [node name="幾何房" type="Area2D" parent="."]
+position = Vector2(312, 144)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="幾何房"]
-position = Vector2(312, 144)
-shape = RectangleShape2D.new()
-size = Vector2(144, 96)
+shape = SubResource("RectangleShape2D_geo")
+
+[node name="Sprite" type="ColorRect" parent="幾何房"]
+offset_left = -72.0
+offset_top = -48.0
+offset_right = 72.0
+offset_bottom = 48.0
+color = Color(0.322, 0.769, 0.102, 0.8)
 
 [node name="Label" type="Label" parent="幾何房"]
-offset_left = 264.0
-offset_top = 128.0
-offset_right = 360.0
-offset_bottom = 160.0
+offset_left = -36.0
+offset_top = -58.0
+offset_right = 36.0
+offset_bottom = -38.0
 text = "幾何房"
+horizontal_alignment = 1
 
 [node name="統計房" type="Area2D" parent="."]
+position = Vector2(504, 144)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="統計房"]
-position = Vector2(504, 144)
-shape = RectangleShape2D.new()
-size = Vector2(144, 96)
+shape = SubResource("RectangleShape2D_stat")
+
+[node name="Sprite" type="ColorRect" parent="統計房"]
+offset_left = -72.0
+offset_top = -48.0
+offset_right = 72.0
+offset_bottom = 48.0
+color = Color(0.98, 0.678, 0.078, 0.8)
 
 [node name="Label" type="Label" parent="統計房"]
-offset_left = 456.0
-offset_top = 128.0
-offset_right = 552.0
-offset_bottom = 160.0
+offset_left = -36.0
+offset_top = -58.0
+offset_right = 36.0
+offset_bottom = -38.0
 text = "統計房"
+horizontal_alignment = 1
 
 [node name="概率房" type="Area2D" parent="."]
+position = Vector2(696, 144)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="概率房"]
-position = Vector2(696, 144)
-shape = RectangleShape2D.new()
-size = Vector2(144, 96)
+shape = SubResource("RectangleShape2D_prob")
+
+[node name="Sprite" type="ColorRect" parent="概率房"]
+offset_left = -72.0
+offset_top = -48.0
+offset_right = 72.0
+offset_bottom = 48.0
+color = Color(0.447, 0.18, 0.82, 0.8)
 
 [node name="Label" type="Label" parent="概率房"]
-offset_left = 648.0
-offset_top = 128.0
-offset_right = 744.0
-offset_bottom = 160.0
+offset_left = -36.0
+offset_top = -58.0
+offset_right = 36.0
+offset_bottom = -38.0
 text = "概率房"
+horizontal_alignment = 1
 
 [node name="函數房" type="Area2D" parent="."]
+position = Vector2(120, 288)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="函數房"]
-position = Vector2(120, 288)
-shape = RectangleShape2D.new()
-size = Vector2(144, 96)
+shape = SubResource("RectangleShape2D_func")
+
+[node name="Sprite" type="ColorRect" parent="函數房"]
+offset_left = -72.0
+offset_top = -48.0
+offset_right = 72.0
+offset_bottom = 48.0
+color = Color(0.922, 0.443, 0.588, 0.8)
 
 [node name="Label" type="Label" parent="函數房"]
-offset_left = 72.0
-offset_top = 272.0
-offset_right = 168.0
-offset_bottom = 304.0
+offset_left = -36.0
+offset_top = -58.0
+offset_right = 36.0
+offset_bottom = -38.0
 text = "函數房"
+horizontal_alignment = 1
 
 [node name="方程房" type="Area2D" parent="."]
+position = Vector2(312, 288)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="方程房"]
-position = Vector2(312, 288)
-shape = RectangleShape2D.new()
-size = Vector2(144, 96)
+shape = SubResource("RectangleShape2D_eq")
+
+[node name="Sprite" type="ColorRect" parent="方程房"]
+offset_left = -72.0
+offset_top = -48.0
+offset_right = 72.0
+offset_bottom = 48.0
+color = Color(0.212, 0.808, 0.788, 0.8)
 
 [node name="Label" type="Label" parent="方程房"]
-offset_left = 264.0
-offset_top = 272.0
-offset_right = 360.0
-offset_bottom = 304.0
+offset_left = -36.0
+offset_top = -58.0
+offset_right = 36.0
+offset_bottom = -38.0
 text = "方程房"
+horizontal_alignment = 1
 
 [node name="面積房" type="Area2D" parent="."]
+position = Vector2(504, 288)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="面積房"]
-position = Vector2(504, 288)
-shape = RectangleShape2D.new()
-size = Vector2(144, 96)
+shape = SubResource("RectangleShape2D_area")
+
+[node name="Sprite" type="ColorRect" parent="面積房"]
+offset_left = -72.0
+offset_top = -48.0
+offset_right = 72.0
+offset_bottom = 48.0
+color = Color(0.98, 0.549, 0.086, 0.8)
 
 [node name="Label" type="Label" parent="面積房"]
-offset_left = 456.0
-offset_top = 272.0
-offset_right = 552.0
-offset_bottom = 304.0
+offset_left = -36.0
+offset_top = -58.0
+offset_right = 36.0
+offset_bottom = -38.0
 text = "面積房"
+horizontal_alignment = 1
 
 [node name="坐標房" type="Area2D" parent="."]
+position = Vector2(696, 288)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="坐標房"]
-position = Vector2(696, 288)
-shape = RectangleShape2D.new()
-size = Vector2(144, 96)
+shape = SubResource("RectangleShape2D_coord")
+
+[node name="Sprite" type="ColorRect" parent="坐標房"]
+offset_left = -72.0
+offset_top = -48.0
+offset_right = 72.0
+offset_bottom = 48.0
+color = Color(0.961, 0.133, 0.176, 0.8)
 
 [node name="Label" type="Label" parent="坐標房"]
-offset_left = 648.0
-offset_top = 272.0
-offset_right = 744.0
-offset_bottom = 304.0
+offset_left = -36.0
+offset_top = -58.0
+offset_right = 36.0
+offset_bottom = -38.0
 text = "坐標房"
+horizontal_alignment = 1
 
 [node name="比率房" type="Area2D" parent="."]
+position = Vector2(120, 432)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="比率房"]
-position = Vector2(120, 432)
-shape = RectangleShape2D.new()
-size = Vector2(144, 96)
+shape = SubResource("RectangleShape2D_ratio")
+
+[node name="Sprite" type="ColorRect" parent="比率房"]
+offset_left = -72.0
+offset_top = -48.0
+offset_right = 72.0
+offset_bottom = 48.0
+color = Color(0.075, 0.761, 0.761, 0.8)
 
 [node name="Label" type="Label" parent="比率房"]
-offset_left = 72.0
-offset_top = 416.0
-offset_right = 168.0
-offset_bottom = 448.0
+offset_left = -36.0
+offset_top = -58.0
+offset_right = 36.0
+offset_bottom = -38.0
 text = "比率房"
+horizontal_alignment = 1
 
 [node name="數列房" type="Area2D" parent="."]
+position = Vector2(312, 432)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="數列房"]
-position = Vector2(312, 432)
-shape = RectangleShape2D.new()
-size = Vector2(144, 96)
+shape = SubResource("RectangleShape2D_seq")
+
+[node name="Sprite" type="ColorRect" parent="數列房"]
+offset_left = -72.0
+offset_top = -48.0
+offset_right = 72.0
+offset_bottom = 48.0
+color = Color(0.678, 0.545, 0, 0.8)
 
 [node name="Label" type="Label" parent="數列房"]
-offset_left = 264.0
-offset_top = 416.0
-offset_right = 360.0
-offset_bottom = 448.0
+offset_left = -36.0
+offset_top = -58.0
+offset_right = 36.0
+offset_bottom = -38.0
 text = "數列房"
+horizontal_alignment = 1
 
 [node name="百分法房" type="Area2D" parent="."]
+position = Vector2(504, 432)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="百分法房"]
-position = Vector2(504, 432)
-shape = RectangleShape2D.new()
-size = Vector2(144, 96)
+shape = SubResource("RectangleShape2D_pct")
+
+[node name="Sprite" type="ColorRect" parent="百分法房"]
+offset_left = -72.0
+offset_top = -48.0
+offset_right = 72.0
+offset_bottom = 48.0
+color = Color(0.545, 0.361, 0.965, 0.8)
 
 [node name="Label" type="Label" parent="百分法房"]
-offset_left = 448.0
-offset_top = 416.0
-offset_right = 560.0
-offset_bottom = 448.0
+offset_left = -36.0
+offset_top = -58.0
+offset_right = 36.0
+offset_bottom = -38.0
 text = "百分法房"
+horizontal_alignment = 1
 
 [node name="近似房" type="Area2D" parent="."]
+position = Vector2(696, 432)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="近似房"]
-position = Vector2(696, 432)
-shape = RectangleShape2D.new()
-size = Vector2(144, 96)
+shape = SubResource("RectangleShape2D_approx")
+
+[node name="Sprite" type="ColorRect" parent="近似房"]
+offset_left = -72.0
+offset_top = -48.0
+offset_right = 72.0
+offset_bottom = 48.0
+color = Color(0.392, 0.447, 0.545, 0.8)
 
 [node name="Label" type="Label" parent="近似房"]
-offset_left = 648.0
-offset_top = 416.0
-offset_right = 744.0
-offset_bottom = 448.0
+offset_left = -36.0
+offset_top = -58.0
+offset_right = 36.0
+offset_bottom = -38.0
 text = "近似房"
+horizontal_alignment = 1
 
 [node name="每日挑戰" type="Area2D" parent="."]
+position = Vector2(408, 528)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="每日挑戰"]
-position = Vector2(384, 480)
-shape = RectangleShape2D.new()
-size = Vector2(96, 96)
+shape = SubResource("RectangleShape2D_daily")
+
+[node name="Sprite" type="ColorRect" parent="每日挑戰"]
+offset_left = -48.0
+offset_top = -48.0
+offset_right = 48.0
+offset_bottom = 48.0
+color = Color(1, 0.42, 0.208, 0.8)
 
 [node name="Label" type="Label" parent="每日挑戰"]
-offset_left = 336.0
-offset_top = 456.0
-offset_right = 432.0
-offset_bottom = 488.0
+offset_left = -36.0
+offset_top = -58.0
+offset_right = 36.0
+offset_bottom = -38.0
 text = "每日挑戰"
 horizontal_alignment = 1
-
-[node name="HUD" type="CanvasLayer" parent="."]
-script = ExtResource("3")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="HUD"]
-offset_right = 1280.0
-offset_bottom = 60.0
-
-[node name="HPBar" type="ProgressBar" parent="HUD/HBoxContainer"]
-custom_minimum_size = Vector2(200, 20)
-layout_mode = 2
-max_value = 100.0
-value = 100.0
-show_percentage = false
-
-[node name="HPIcon" type="Label" parent="HUD/HBoxContainer"]
-layout_mode = 2
-text = "HP"
-
-[node name="XPBar" type="ProgressBar" parent="HUD/HBoxContainer"]
-custom_minimum_size = Vector2(200, 20)
-layout_mode = 2
-max_value = 100.0
-value = 50.0
-show_percentage = false
-
-[node name="XPIcon" type="Label" parent="HUD/HBoxContainer"]
-layout_mode = 2
-text = "XP"
-
-[node name="LevelLabel" type="Label" parent="HUD/HBoxContainer"]
-layout_mode = 2
-text = "Lv.1"
-
-[node name="CreditsLabel" type="Label" parent="HUD/HBoxContainer"]
-layout_mode = 2
-text = "0"
-
-[node name="StreakLabel" type="Label" parent="HUD/HBoxContainer"]
-layout_mode = 2
-text = "0"
-
-[node name="DeathPanel" type="PanelContainer" parent="HUD"]
-visible = false
-anchors_anchors = Vector2(0.5, 0.5)
-offset_left = -200.0
-offset_top = -100.0
-offset_right = 200.0
-offset_bottom = 100.0
-
-[node name="VBox" type="VBoxContainer" parent="HUD/DeathPanel"]
-layout_mode = 2
-alignment = 1
-
-[node name="Title" type="Label" parent="HUD/DeathPanel/VBox"]
-layout_mode = 2
-text = "你暈倒了!"
-horizontal_alignment = 1
-
-[node name="Restart" type="Button" parent="HUD/DeathPanel/VBox"]
-layout_mode = 2
-text = "重新開始"
