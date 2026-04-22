@@ -17,6 +17,11 @@ jobs:
         with:
           lfs: true
       
+      - name: Remove MCP plugin for export
+        run: |
+          # Remove MCP plugin directory to prevent export errors
+          rm -rf addons/mcp_server
+      
       - name: Export HTML5
         run: |
           mkdir -p build
